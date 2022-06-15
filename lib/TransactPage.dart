@@ -50,9 +50,6 @@ class _TransactPageState extends State<TransactPage> {
     // ResponseConfig.startTrxn = false;
     // Navigator.pop(context, true);
     // return Future.value(false);
-    print('***********************8  targetUrl  $targetUrl');
-    print('***********************8  targetUrl 2 $targetUrl2');
-    print('***********************8  my  $myUrl');
 
     var canBack=false;
 
@@ -63,13 +60,11 @@ class _TransactPageState extends State<TransactPage> {
     }
 
     if(canBack){
-print('**************************  can back');
       widget.onBack();
 
          return Future.value(true);
     }
     else{
-      print('**************************  cant back');
 
       return Future.value(false);
 
@@ -132,7 +127,6 @@ print('**************************  can back');
                 onWebViewCreated: (WebViewController webViewController) async{
                   _controller.complete(webViewController);
                   myUrl=' ${await webViewController.currentUrl()}';
-                   print('************************************* onWebViewCreated current url: ${myUrl}');
 
 
                 },
