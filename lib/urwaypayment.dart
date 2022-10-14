@@ -668,8 +668,9 @@ ipAdd='20.74.255.13';
     return d;
   }
 
-  static void showalertDailog(BuildContext context, String title,
+  static void showAlertDailog(BuildContext context, String title,
       String description) {
+
     AlertDialog alert = AlertDialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -708,8 +709,14 @@ ipAdd='20.74.255.13';
                 Align(
                   alignment: Alignment.center,
 
-                  child: FlatButton(
+                  child: ElevatedButton(
                     color: Color(0xff00B3CD),
+                    style: ElevatedButton.styleFrom(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff00B3CD),
+
+                      ),
+                    ),
                     onPressed: () {
                       Navigator.of(context)
                           .pop(); // To close the dialog//todo close plugin
