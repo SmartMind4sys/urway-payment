@@ -668,7 +668,7 @@ ipAdd='20.74.255.13';
     return d;
   }
 
-  static void showAlertDailog(BuildContext context, String title,
+  static void showalertDailog(BuildContext context, String title,
       String description) {
 
     AlertDialog alert = AlertDialog(
