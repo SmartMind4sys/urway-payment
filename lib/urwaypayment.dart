@@ -709,20 +709,20 @@ ipAdd='20.74.255.13';
                 Align(
                   alignment: Alignment.center,
 
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff00B3CD),
+                  child:                       InkWell(
+                    onTap: (){
 
-                      ),
-                    ),
-                    onPressed: () {
                       Navigator.of(context)
                           .pop(); // To close the dialog//todo close plugin
                       ResponseConfig.startTrxn = false;
                     },
-                    child: Text('OK',style:TextStyle(color:Colors.white)),
+
+                    child: Container(
+                      color: Color(0xff00B3CD),
+                      child: Text('OK',style:TextStyle(color:Colors.white)),
+                    ),
                   ),
+
                 ),
               ],
             ),
