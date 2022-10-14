@@ -710,7 +710,6 @@ ipAdd='20.74.255.13';
                   alignment: Alignment.center,
 
                   child: ElevatedButton(
-                    color: Color(0xff00B3CD),
                     style: ElevatedButton.styleFrom(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xff00B3CD),
