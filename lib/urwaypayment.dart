@@ -5,7 +5,7 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:core';
 import 'package:apple_pay_flutter/apple_pay_flutter.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:convert/convert.dart';
 import 'package:dart_ipify/dart_ipify.dart';
 import 'package:device_info/device_info.dart';

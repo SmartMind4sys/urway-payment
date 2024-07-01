@@ -43,8 +43,12 @@ class _TransactPageState extends State<TransactPage> {
   late String maskedCardNo;
   late String result;
 
-  final Completer<WebViewController> _controller =
-  Completer<WebViewController>();
+  // final Completer<WebViewController> _controller =
+  // Completer<WebViewController>();
+
+  late final WebViewController _controller;
+
+
   Future<bool> onBackPressed() async {
     // Your back press code here...
     // ResponseConfig.startTrxn = false;
@@ -75,7 +79,51 @@ class _TransactPageState extends State<TransactPage> {
  void initState() {
    // TODO: implement initState
    super.initState();
-   if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView(); // <<== THIS
+  // if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView(); // <<== THIS
+
+
+
+   _controller = WebViewController()
+     ..setJavaScriptMode(JavaScriptMode.unrestricted)
+     ..setBackgroundColor(Colors.white)
+     ..setNavigationDelegate(
+       NavigationDelegate(
+         onProgress: (int progress) {
+           // Update loading bar.
+         },
+         onPageStarted: (String url) {},
+         onPageFinished: (String url) {
+                  myUrl=url;
+
+                  var disurl=url.toString();
+                  print('Transact URl  $disurl');
+                  //pr.hide();
+                  if (disurl.contains("&Result")) {
+
+//            RegExp regExp = new RegExp("Result=(.*)&Track");
+//            token = regExp.firstMatch(url).group(1);
+                    List<String> arr = url.toString().split('?');
+                    var resData=arr[1];
+                    print('RES DATA $resData');
+                    String lastData=splitResponse(arr[1]);
+                    print('Transact $lastData');
+                    Navigator.pop(context, '$lastData');
+
+         }},
+         onHttpError: (HttpResponseError error) {},
+         onWebResourceError: (WebResourceError error) {},
+         onNavigationRequest: (NavigationRequest request) {
+
+           myUrl=request.url;
+           if (request.url.startsWith(' ')) {
+             return NavigationDecision.prevent;
+           }
+           return NavigationDecision.navigate;
+         },
+       ),
+     )
+     ..loadRequest(Uri.parse(widget.inURL));
+
 
    //SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
  }
@@ -119,50 +167,51 @@ class _TransactPageState extends State<TransactPage> {
               SizedBox(height: 3,),
 
               Expanded(child:
-              WebView(
-                initialUrl: widget.inURL,
-                javascriptMode: JavascriptMode.unrestricted,
-                zoomEnabled: true,
-                backgroundColor: Colors.white,
-                onWebViewCreated: (WebViewController webViewController) async{
-                  _controller.complete(webViewController);
-                  myUrl=' ${await webViewController.currentUrl()}';
-
-
-                },
-
-                navigationDelegate: (NavigationRequest request) {
-
-                  myUrl=request.url;
-                  // if(request.url.contains('provider')) {
-                  //
-                  // //  logic.updateBack(true);
-                  //   //You can do anything
-                  //
-                  //   //Prevent that url works
-                  //   // return NavigationDecision.prevent;
-                  // }
-                  //Any other url works
-                  return NavigationDecision.navigate;
-                },
-
-                onPageFinished: (url){
-                  myUrl=url;
-
-                  var disurl=url.toString();
-                  print('Transact URl  $disurl');
-                  //pr.hide();
-                  if (disurl.contains("&Result")) {
-
-//            RegExp regExp = new RegExp("Result=(.*)&Track");
-//            token = regExp.firstMatch(url).group(1);
-                    List<String> arr = url.toString().split('?');
-                    var resData=arr[1];
-                    print('RES DATA $resData');
-                    String lastData=splitResponse(arr[1]);
-                    print('Transact $lastData');
-                    Navigator.pop(context, '$lastData');
-                }},
+              WebViewWidget(
+                 controller: _controller,
+//                 initialUrl: widget.inURL,
+//                 javascriptMode: JavascriptMode.unrestricted,
+//                 zoomEnabled: true,
+//                 backgroundColor: Colors.white,
+//                 onWebViewCreated: (WebViewController webViewController) async{
+//                   _controller.complete(webViewController);
+//                   myUrl=' ${await webViewController.currentUrl()}';
+//
+//
+//                 },
+//
+//                 navigationDelegate: (NavigationRequest request) {
+//
+//                   myUrl=request.url;
+//                   // if(request.url.contains('provider')) {
+//                   //
+//                   // //  logic.updateBack(true);
+//                   //   //You can do anything
+//                   //
+//                   //   //Prevent that url works
+//                   //   // return NavigationDecision.prevent;
+//                   // }
+//                   //Any other url works
+//                   return NavigationDecision.navigate;
+//                 },
+//
+//                 onPageFinished: (url){
+//                   myUrl=url;
+//
+//                   var disurl=url.toString();
+//                   print('Transact URl  $disurl');
+//                   //pr.hide();
+//                   if (disurl.contains("&Result")) {
+//
+// //            RegExp regExp = new RegExp("Result=(.*)&Track");
+// //            token = regExp.firstMatch(url).group(1);
+//                     List<String> arr = url.toString().split('?');
+//                     var resData=arr[1];
+//                     print('RES DATA $resData');
+//                     String lastData=splitResponse(arr[1]);
+//                     print('Transact $lastData');
+//                     Navigator.pop(context, '$lastData');
+//                 }},
 
               )
 
