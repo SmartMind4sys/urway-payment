@@ -306,6 +306,7 @@ class Payment {
         DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
          // e.g. "Moto G (4)"
 // ipAdd='20.74.255.13';
+        ipAdd = await Ipify.ipv4();
 
         if (Platform.isAndroid) {
           AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
