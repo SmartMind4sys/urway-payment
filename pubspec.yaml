@@ -22,7 +22,7 @@ dependencies:
   connectivity_macos: ^0.2.1+2
   device_info: ^2.0.3
   dart_ipify: ^1.1.1
-  apple_pay_flutter: ^1.0.1
+  apple_pay_flutter: ^1.0.2
 #  flutter_webview_plugin: ^0.4.0
   webview_flutter: ^4.8.0
 
