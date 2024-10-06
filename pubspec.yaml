@@ -20,7 +20,7 @@ dependencies:
   connectivity_plus: ^6.0.3
   email_validator: ^3.0.0
   connectivity_macos: ^0.2.1+2
-  device_info: ^2.0.3
+  device_info_plus: ^10.1.2
   dart_ipify: ^1.1.1
   apple_pay_flutter: ^1.0.2
 #  flutter_webview_plugin: ^0.4.0

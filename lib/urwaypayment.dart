@@ -8,7 +8,7 @@ import 'package:apple_pay_flutter/apple_pay_flutter.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:convert/convert.dart';
 import 'package:dart_ipify/dart_ipify.dart';
-import 'package:device_info/device_info.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/services.dart';
 //import 'package:flutter_inappwebview/flutter_inappwebview.dart';
