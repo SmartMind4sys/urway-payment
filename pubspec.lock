@@ -5,10 +5,10 @@ packages:
     dependency: "direct main"
     description:
       name: apple_pay_flutter
-      sha256: "191919021be625211b2688c87ed46f5ddc749f1219eb50cfa6159c9613efd5de"
+      sha256: "3d35ca94615da53a282b135e24cbb2a34e6f96a8386d9e3b52988a771608740e"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   args:
     dependency: transitive
     description:
@@ -457,10 +457,10 @@ packages:
     dependency: transitive
     description:
       name: vm_service
-      sha256: f652077d0bdf60abe4c1f6377448e8655008eef28f128bc023f7b5e8dfeb48fc
+      sha256: "5c5f338a667b4c644744b661f309fb8080bb94b18a7e91ef1dbd343bed00ed6d"
       url: "https://pub.dev"
     source: hosted
-    version: "14.2.4"
+    version: "14.2.5"
   web:
     dependency: transitive
     description:
