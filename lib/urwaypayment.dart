@@ -139,8 +139,8 @@ class Payment {
               cardToken,
               tokenizationType,
               tokenOperation,
-            onBack,
-            title,ar,appBar
+              onBack,
+              title,ar,appBar
           );
           payRespData = order;
         }
@@ -187,7 +187,7 @@ class Payment {
     String result;
     double progress = 0;
     String pipeSeperatedString;
-   // Function? onBack;
+    // Function? onBack;
     var body;
     var wifiIp;
     ResponseConfig resp = ResponseConfig();
@@ -233,36 +233,41 @@ class Payment {
     Constantvals.merchantkey = merc;
     Constantvals.requrl = req_url;
 
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile) {
-      print("Connected to Mobile Network");
-      final ipv4 = await Ipify.ipv4();
-      print(ipv4);
-      //ipAdd = await GetIp.ipAddress;  --ios
-      ipAdd = ipv4;
-//      ipAdd = await GetIp.ipAddress;
-//       ipAdd = await FlutterIp.externalIP;------------------------------------------
-
-      print('merchantIP  mobile $ipAdd');
-
-    } else if (connectivityResult == ConnectivityResult.wifi) {
+    final ipv4 = await Ipify.ipv4();
+    ipAdd = ipv4;
 
 
-      print("Connected to WiFi");
-
-      final ipv4 = await Ipify.ipv4();
-      print(ipv4);
-      //ipAdd = await GetIp.ipAddress;  --ios
-      ipAdd = ipv4;
-      print('$wifiIp');
-//      if(merchantIp == '' || merchantIp == null)
-//      {
-      //ipAdd = await FlutterIp.externalIP;----------------------------------------------
-
-    }
-    else {
-      print("Unable to connect. Please Check Internet Connection");
-    }
+//     var connectivityResult = await (Connectivity().checkConnectivity());
+//     if (connectivityResult == ConnectivityResult.mobile) {
+//       print("Connected to Mobile Network");
+//       final ipv4 = await Ipify.ipv4();
+//       print(ipv4);
+//       //ipAdd = await GetIp.ipAddress;  --ios
+//       ipAdd = ipv4;
+// //      ipAdd = await GetIp.ipAddress;
+// //       ipAdd = await FlutterIp.externalIP;------------------------------------------
+//
+//       print('merchantIP  mobile $ipAdd');
+//
+//     } else if (connectivityResult == ConnectivityResult.wifi)
+//     {
+//
+//
+//       print("Connected to WiFi");
+//
+//       final ipv4 = await Ipify.ipv4();
+//       print(ipv4);
+//       //ipAdd = await GetIp.ipAddress;  --ios
+//       ipAdd = ipv4;
+//       print('$wifiIp');
+// //      if(merchantIp == '' || merchantIp == null)
+// //      {
+//       //ipAdd = await FlutterIp.externalIP;----------------------------------------------
+//
+//     }
+//     else {
+//       print("Unable to connect. Please Check Internet Connection");
+//     }
     //ipAdd = "1.1.1.1";
     String ipAdd1;
 
@@ -288,23 +293,23 @@ class Payment {
       final digestHex = hex.encode(sha256Result.bytes);
 
 /*************************************************************/
-    //   {
-    //     "deviceInfo": {
-    // {
-    // "pluginName": "Flutter",
-    // "pluginVersion": "1.0",
-    // "pluginPlatform": "Mobile/desktop/Tablet",
-    // "deviceModel": "iphone 6s",
-    // "devicePlatform": "iphone",
-    // "deviceOSVersion": "15.0.1"
-    // }
-    // }
+      //   {
+      //     "deviceInfo": {
+      // {
+      // "pluginName": "Flutter",
+      // "pluginVersion": "1.0",
+      // "pluginPlatform": "Mobile/desktop/Tablet",
+      // "deviceModel": "iphone 6s",
+      // "devicePlatform": "iphone",
+      // "deviceOSVersion": "15.0.1"
+      // }
+      // }
 
 
 /*************************************************************/
       try {
         DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-         // e.g. "Moto G (4)"
+        // e.g. "Moto G (4)"
 // ipAdd='20.74.255.13';
         ipAdd = await Ipify.ipv4();
 
@@ -363,7 +368,7 @@ class Payment {
             cardToken: cardToken,
             tokenizationType: tokenizationType,
             requestHash: digestHex, tokenOperation: '', udf7: ''
-            /*,deviceinfo: devicebody*/);
+          /*,deviceinfo: devicebody*/);
         body = json.encode(payment.toMap());
         print('action code 1');
         print('mercha $ipAdd');
@@ -422,24 +427,24 @@ class Payment {
       }
       else if (action == "13") {
         PaySTC paySTC = new PaySTC(
-            terminalId: t_id,
-            password: t_pass,
-            action: action,
-            currency: currency,
-            customerEmail: customerEmail,
-            amount: amt,
-            customerIp: ipAdd,
-            merchantIp: ipAdd,
-            trackid: trackid,
-            udf2: udf2,
-            country: country,
-            udf3: udf3,
-            udf1: udf1,
-            udf5: udf5,
-            udf4: udf4,
-            requestHash: digestHex, udf7: '',
-            
-            /*deviceinfo: devicebody*/);
+          terminalId: t_id,
+          password: t_pass,
+          action: action,
+          currency: currency,
+          customerEmail: customerEmail,
+          amount: amt,
+          customerIp: ipAdd,
+          merchantIp: ipAdd,
+          trackid: trackid,
+          udf2: udf2,
+          country: country,
+          udf3: udf3,
+          udf1: udf1,
+          udf5: udf5,
+          udf4: udf4,
+          requestHash: digestHex, udf7: '',
+
+          /*deviceinfo: devicebody*/);
 
         body = json.encode(paySTC.toMap());
       }
@@ -490,7 +495,7 @@ class Payment {
                   return  TransactPage(inURL: compURL,onBack:onBack,ar: ar,title: title,appBar: appBar,);
                 })))!;
             print('Navigator Otput $result');
-          //  _writetoFile(" Response from Hosted Page :  " + result + "\n");
+            //  _writetoFile(" Response from Hosted Page :  " + result + "\n");
 
             if (result == null) {
               result = '';
@@ -513,14 +518,14 @@ class Payment {
             var maskedPanNo = data["maskedPAN"] as String;
 
             if(transId == null )
-              {
+            {
 
-                pay=payId;
-              }
+              pay=payId;
+            }
             else
-              {
-                pay=transId;
-              }
+            {
+              pay=transId;
+            }
 
 
             TrxnRespModel trxnRespModel = new TrxnRespModel(TranId: pay,
@@ -530,7 +535,7 @@ class Payment {
                 cardToken: cardToken,cardBrand: cardBrand,maskedPanNo: maskedPanNo,ResponseMsg: "" );
             var resp = json.encode(trxnRespModel.toMap());
             ResponseConfig.startTrxn = false;
-           // _writetoFile(" Response from Hosted Page :  " + resp + "\n");
+            // _writetoFile(" Response from Hosted Page :  " + resp + "\n");
             readRespData = resp;
           }
           else {
@@ -548,17 +553,17 @@ class Payment {
               ErrorMsg = resp.respCode['$apirespCode'] ?? " Transaction";;
               print("API Error else " + ErrorMsg);
               if( ErrorMsg == null)
-                {
-                  print("API apirespCode else " + ErrorMsg);
+              {
+                print("API apirespCode else " + ErrorMsg);
 
-                  ErrorMsg = "Transaction with apirespCode";
-                }
+                ErrorMsg = "Transaction with apirespCode";
+              }
             }
 
             var apiresult = data["result"] as String;
-        //    _writetoFile(
-        //         " Response from Hosted Page :  " + apirespCode + " : " +
-        //             ErrorMsg + "\n");
+            //    _writetoFile(
+            //         " Response from Hosted Page :  " + apirespCode + " : " +
+            //             ErrorMsg + "\n");
             print("API Result " + apiresult);
 //            print('ResponseCode $apirespCode : $ErrorMsg');
             showalertDailog(context, '$apiresult', '$ErrorMsg');
@@ -691,8 +696,8 @@ class Payment {
                 Text(
                   title,
                   style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.w700,
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.w700,
                       color:Color(0xff00B3CD)
 
                   ),
@@ -702,8 +707,8 @@ class Payment {
                   description,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 16.0,
-                    color:Color(0xff00B3CD)
+                      fontSize: 16.0,
+                      color:Color(0xff00B3CD)
                   ),
                 ),
                 SizedBox(height: 24.0),
@@ -760,7 +765,7 @@ class Payment {
     dynamic applePaymentData;
     String appleRespdata="";
 
-  //  _writetoFile("Runali Apple :" );
+    //  _writetoFile("Runali Apple :" );
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
@@ -807,50 +812,50 @@ class Payment {
             _writetoFile("Runali Apple token :" + applePaymentData.toString());
           }
         }
-          on PlatformException {
-            print('Failed payment');
-         //   ResponseConfig.startTrxn = false;
-          }
+        on PlatformException {
+          print('Failed payment');
+          //   ResponseConfig.startTrxn = false;
+        }
         var totalcharge= double.parse(amt)+double.parse(shippingCharge);
         String strtlchr=totalcharge.toString();
         //
 
         // String data = json.decode(applePaymentData);
 
-      if(applePaymentData.toString().contains("code"))
+        if(applePaymentData.toString().contains("code"))
         {
-           return "";
+          return "";
         }
-      else {
-            var order = await applepayapi(
-            context,
-            country,
-            action,
-            currency,
-            strtlchr,
-            customerEmail,
-            trackid,
-            udf1,
-            udf2,
-            udf3,
-            udf4,
-            udf5,
-            tokenizationType,
-            applePaymentData);
-            print("APPLE RESP $order");
-            appleRespdata = order;
-         }
+        else {
+          var order = await applepayapi(
+              context,
+              country,
+              action,
+              currency,
+              strtlchr,
+              customerEmail,
+              trackid,
+              udf1,
+              udf2,
+              udf3,
+              udf4,
+              udf5,
+              tokenizationType,
+              applePaymentData);
+          print("APPLE RESP $order");
+          appleRespdata = order;
         }
       }
-      on SocketException catch (e) {
+    }
+    on SocketException catch (e) {
       ResponseConfig.startTrxn = false;
       appleRespdata = "Please check internet connection";
     }
     print("APPLE RESP appleRespdata $appleRespdata");
     return appleRespdata;
   }
-  
-  
+
+
 
   static Future<String> applepayapi(BuildContext context, String country,
       String action, String currency, String amt, String customerEmail,
@@ -884,35 +889,38 @@ class Payment {
     Constantvals.termpass = t_pass;
     Constantvals.merchantkey = merc;
     Constantvals.requrl = req_url;
-
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile) {
-      print("Connected to Mobile Network");
-      final ipv4 = await Ipify.ipv4();
-      print(ipv4);
-
-      ipAdd = ipv4;
-
-      print('merchantIP  mobile $ipAdd');
-    } else if (connectivityResult == ConnectivityResult.wifi) {
-     // WifiIpInfo info;
-      try {
-
-        final ipv4 = await Ipify.ipv4();
-        print(ipv4);
-        ipAdd = ipv4;
-
-      } on PlatformException {
-        print('Failed to get broadcast IP.');
-      }
-//      print("Connected to WiFi apple");
-//      print('$ipAdd');
-
-      //ipAdd = await GetIp.ipAddress;
-    }
-    else {
-      print("Unable to connect. Please Check Internet Connection");
-    }
+    final ipv4 = await Ipify.ipv4();
+    ipAdd = ipv4;
+//     var connectivityResult = await (Connectivity().checkConnectivity());
+//     if (connectivityResult == ConnectivityResult.mobile) {
+//       print("Connected to Mobile Network");
+//       final ipv4 = await Ipify.ipv4();
+//       print(ipv4);
+//
+//       ipAdd = ipv4;
+//
+//       print('merchantIP  mobile $ipAdd');
+//     }
+//     else if (connectivityResult == ConnectivityResult.wifi)
+//     {
+//      // WifiIpInfo info;
+//       try {
+//
+//         final ipv4 = await Ipify.ipv4();
+//         print(ipv4);
+//         ipAdd = ipv4;
+//
+//       } on PlatformException {
+//         print('Failed to get broadcast IP.');
+//       }
+// //      print("Connected to WiFi apple");
+// //      print('$ipAdd');
+//
+//       //ipAdd = await GetIp.ipAddress;
+//     }
+//     else {
+//       print("Unable to connect. Please Check Internet Connection");
+//     }
 
 
     if (isValidationSucess(
@@ -929,15 +937,15 @@ class Payment {
       print("PAYMENT in Runali $appleToken");
 
       if(["", null].contains(appleToken['paymentData']) )
-        {
-          print("R********ER  Empty");
+      {
+        print("R********ER  Empty");
 
-        }
+      }
       else
-        {
-          paymentTokk = jsonDecode(appleToken['paymentData']) ?? "empty" ;
-          print("R********ER $paymentTokk");
-        }
+      {
+        paymentTokk = jsonDecode(appleToken['paymentData']) ?? "empty" ;
+        print("R********ER $paymentTokk");
+      }
 
       // final  runaData= jsonDecode(appleToken);
 
@@ -958,19 +966,19 @@ class Payment {
       //   {
       //     print('apple Token is Empty');
       //   }
-   //   String paymentData = appleToken['transactionIdentifier'];
-     // print("PAYMENT $paymentData");
+      //   String paymentData = appleToken['transactionIdentifier'];
+      // print("PAYMENT $paymentData");
       pipeSeperatedString =
           trackid + "|" + Constantvals.termId + "|" + Constantvals.termpass +
               "|" +
               Constantvals.merchantkey + "|" + amt + "|" + currency;
-      print('$pipeSeperatedString');
+      // print('$pipeSeperatedString');
       var bytes = utf8.encode(pipeSeperatedString);
       Digest sha256Result = sha256.convert(bytes);
       final digestHex = hex.encode(sha256Result.bytes);
 
       //String hashVal=sha256Result.toString();
-      print('HashVal $digestHex');
+      //  print('HashVal $digestHex');
       try {
         var jsonBody = jsonEncode({
 
@@ -986,7 +994,7 @@ class Payment {
           'amount': amt,
           'country': country,
           'currency': currency,
-         'customerIp': ipAdd,
+          'customerIp': ipAdd,
           // "udf1": "",
           // "udf3": "en",
           "udf4": "ApplePay",
@@ -1016,9 +1024,9 @@ class Payment {
           print(response.body.toString());
           var data = json.decode(response.body);
           var payId = data["tranid"] as String;
-       // var tar_url = data["targetUrl"] as String;
+          // var tar_url = data["targetUrl"] as String;
           var resp_code = data["responseCode"] as String;
-         // pr.hide();
+          // pr.hide();
           print("DATTAT $data");
           if (resp_code == '000') {
             var jsonBody = jsonEncode({
@@ -1028,7 +1036,7 @@ class Payment {
               'customerEmail': customerEmail,
               'customerName': "",
               'action': 10,
-             'merchantIp': ipAdd,
+              'merchantIp': ipAdd,
               'terminalId': Constantvals.termId,
               'password': Constantvals.termpass,
               'amount': amt,
@@ -1050,7 +1058,7 @@ class Payment {
               },
               body: jsonBody,
             );
-            print("Transaction Enquiry Resp $jsonBody");
+            // print("Transaction Enquiry Resp $jsonBody");
 
             print(response.statusCode);
             if (response.statusCode == 200) {
@@ -1067,7 +1075,7 @@ class Payment {
               var cardToken = data["cardToken"] as String;
               var cardBrand = data["cardBrand"] as String;
               var maskedPanNo = data["maskedPAN"] as String;
-             var ResponseMsg = resp.respCode['$ResponseCode'] ?? "";
+              var ResponseMsg = resp.respCode['$ResponseCode'] ?? "";
 
               TrxnRespModel trxnRespModel = new TrxnRespModel(TranId: payId,
                   ResponseCode: ResponseCode,
@@ -1128,7 +1136,7 @@ class Payment {
       ResponseConfig.startTrxn = false;
     }
 
-return RespData;
+    return RespData;
   }
 }
 
