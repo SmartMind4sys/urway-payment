@@ -724,6 +724,8 @@ class Payment {
                     },
 
                     child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 30,vertical: 8),
+
                       color: Color(0xff00B3CD),
                       child: Text('OK',style:TextStyle(color:Colors.white)),
                     ),
